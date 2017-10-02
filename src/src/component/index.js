@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListContainer from './listcontainer.js';
-import { fetchPosts } from '../action/index.js';
+import { fetchPosts ,fetchPosts } from '../action/index.js';
 
 class Form extends Component{
 
