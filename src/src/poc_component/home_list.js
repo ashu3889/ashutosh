@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchPosts} from '../action/index.js';
+import { changeProfileHeader} from '../action/index.js';
 import { Switch, Route ,Link } from 'react-router-dom';
 import accountsIcon from "../images/MyAccounts.png";
 import transferIcon from "../images/Transfer.png";
@@ -10,19 +10,17 @@ import helpIcon from "../images/Help.png";
 import settingsIcon from "../images/Settings.png";
 import statementsIcon from "../images/docs.png";
 
+
+
+
+
 const accountsIcon1 = require("../images/MyAccounts.png");
 
-
-export default class UserHomeList extends Component{
+class UserHomeList extends Component{
 static contextTypes = {
       router: React.PropTypes.object
     };
-
-    navigateToSection(){
-alert('called');
-     	//console.log(this.context);
-    	// this.context.router.history.push('/userhome');
-  };
+ 
 
 
 render(){
@@ -43,16 +41,17 @@ render(){
      
        <div className="row col-md-8 col-xs-8 col-xs-push-2" key={d.id} style={sliderOptions}>
         <div className='col-xs-1'>
-        <img
+        <img       
           src={d.src}
           alt={d.src}
           style={sliderIcon}
-          
-        //resizeMode="contain"
+         
+
+        //resizeMode="contain"s
         />
         </div>
-        <div className='col-xs-7'>
-        <Link to= {`/userhome/d.url`} style={item}>{d.name}</Link>
+        <div className='col-xs-8'>
+        <Link onClick = {() => this.props.changeProfileHeader(d.name)} to= {`userhome/${d.url}`}  style={item}>{d.name}</Link>
         </div>
       </div>
      );
@@ -65,6 +64,13 @@ render(){
 }
 }
 
+
+function mapStateToProps(state) {
+  return { posts: state.headerdata };
+}
+
+export default connect(mapStateToProps, { changeProfileHeader })(UserHomeList);
+
 var  menu = {   
     backgroundColor: '#084891',
    
@@ -75,7 +81,10 @@ var  sliderOptions = {
     height: 50,
     alignItems: "center",
     marginLeft: 10,
-    borderColor: '#ccc'
+    borderColor: '#ccc',
+    borderWidth: .5,
+    borderBottomStyle: 'solid',
+    marginTop : 15,
   };
 
 var  item = {

@@ -1,6 +1,13 @@
 import axios from 'axios';
 
+export function changeProfileHeader(data) {
 
+return({
+type: 'CHANGE_HEADER',
+payload: data,
+})
+
+};
 
 export function deleteEmployee(id , callback) {
 

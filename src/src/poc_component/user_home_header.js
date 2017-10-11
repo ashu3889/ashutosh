@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchPosts} from '../action/index.js';
 import circleIcon from "../images/circle.png";
+import { changeProfileHeader} from '../action/index.js';
+import { Switch, Route ,Link } from 'react-router-dom';
 
-export default class UserHomeHeader extends Component{
+class UserHomeHeader extends Component{
 
 render(){
 	return(
@@ -14,11 +16,16 @@ render(){
 <div className ="col-md-8 col-xs-8">
  <p style={name}>Good evening</p>
  <p style={preferencetext} > Edit preferences</p>
+
+  <Link style={preferencetext} onClick = {() => this.props.changeProfileHeader('Preference')} to= {`userhome/preference`}>Edit preferences</Link>
 </div>
 </div>
      )
 }
 }
+
+
+export default connect(null, { changeProfileHeader })(UserHomeHeader);
 
 var preferencetext = {
     position: 'absolute',

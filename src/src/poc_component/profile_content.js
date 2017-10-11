@@ -10,6 +10,7 @@ import Payments from './user/payments.js';
 import Help from './user/help.js';
 import Settings from './user/setting.js';
 import Statements from './user/statement.js';
+import Preference from './user/preference.js';
 
 export default class ProfileContent extends Component{
 
@@ -22,7 +23,8 @@ render(){
 		<Route path='/userhome/sendmoney' component={SendMoney}/>
 		<Route path='/userhome/help' component={Help}/>
 		<Route path='/userhome/settings' component={Settings}/>
-        <Route path='/userhome/statements' component={Statements}/>  
+        <Route path='/userhome/statements' component={Statements}/> 
+        <Route path='/userhome/preference' component={Preference}/>  
      </div>
      )
 }
